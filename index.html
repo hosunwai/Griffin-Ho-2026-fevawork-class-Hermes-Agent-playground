@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1a1d21;
+    --text-soft: #6b7280;
+    --text-faint: #9ca3af;
+    --accent: #4f46e5;
+    --accent-soft: #eef2ff;
+    --border: #e5e7eb;
+    --danger: #ef4444;
+    --danger-soft: #fef2f2;
+    --success: #10b981;
+    --radius: 14px;
+    --shadow: 0 1px 3px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101114;
+      --card: #1a1c22;
+      --text: #f3f4f6;
+      --text-soft: #9ca3af;
+      --text-faint: #6b7280;
+      --accent: #818cf8;
+      --accent-soft: #262a3d;
+      --border: #2c2f3a;
+      --danger: #f87171;
+      --danger-soft: #2a1a1e;
+      --success: #34d399;
+      --shadow: 0 1px 3px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 48px 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app { width: 100%; max-width: 480px; }
+
+  header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px; }
+  h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+  .date { font-size: 13px; color: var(--text-soft); font-weight: 500; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  /* progress */
+  .progress-wrap { padding: 16px 20px 0; }
+  .progress-meta { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-soft); margin-bottom: 8px; }
+  .progress-bar { height: 6px; background: var(--accent-soft); border-radius: 99px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 99px; width: 0%; transition: width .35s cubic-bezier(.4,0,.2,1); }
+
+  /* add form */
+  form.add-row { display: flex; gap: 8px; padding: 16px 20px; }
+  input[type="text"] {
+    flex: 1;
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color .15s;
+  }
+  input[type="text"]::placeholder { color: var(--text-faint); }
+  input[type="text"]:focus { outline: none; border-color: var(--accent); }
+  button.add-btn {
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: inherit;
+    padding: 0 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: filter .15s, transform .1s;
+  }
+  button.add-btn:hover { filter: brightness(1.08); }
+  button.add-btn:active { transform: scale(.97); }
+  button.add-btn:focus-visible, .check:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* filters */
+  .filters { display: flex; gap: 6px; padding: 0 20px 12px; }
+  .filters button {
+    border: none;
+    background: transparent;
+    color: var(--text-soft);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    padding: 6px 12px;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  .filters button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+  .filters button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* list */
+  ul.list { list-style: none; }
+  li.item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 20px;
+    border-top: 1px solid var(--border);
+    animation: slideIn .25s ease;
+  }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+  .check {
+    appearance: none;
+    width: 22px; height: 22px;
+    flex-shrink: 0;
+    border: 2px solid var(--border);
+    border-radius: 7px;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    transition: background .15s, border-color .15s;
+  }
+  .check:hover { border-color: var(--accent); }
+  .check:checked { background: var(--accent); border-color: var(--accent); }
+  .check:checked::after {
+    content: "";
+    width: 10px; height: 6px;
+    border-left: 2.5px solid #fff;
+    border-bottom: 2.5px solid #fff;
+    transform: rotate(-45deg) translate(1px, 1px);
+  }
+
+  .item .label { flex: 1; font-size: 15px; line-height: 1.4; word-break: break-word; transition: color .2s; }
+  li.done .label { color: var(--text-faint); text-decoration: line-through; }
+
+  .del {
+    border: none;
+    background: transparent;
+    color: var(--text-faint);
+    font-size: 18px;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .15s, background .15s, color .15s;
+  }
+  li.item:hover .del, .del:focus-visible { opacity: 1; }
+  .del:hover { background: var(--danger-soft); color: var(--danger); }
+  .del:focus-visible { opacity: 1; outline: 2px solid var(--danger); outline-offset: 2px; }
+  @media (hover: none) { .del { opacity: .5; } }
+
+  /* empty state */
+  .empty { padding: 40px 20px; text-align: center; color: var(--text-faint); font-size: 14px; }
+  .empty .icon { font-size: 32px; margin-bottom: 10px; opacity: .6; }
+
+  footer.bar { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-soft); font-weight: 500; }
+  button.clear {
+    border: none; background: none; color: var(--text-soft);
+    font-size: 13px; font-weight: 600; font-family: inherit;
+    padding: 6px 10px; border-radius: 8px; cursor: pointer;
+    transition: background .15s, color .15s;
+  }
+  button.clear:hover { background: var(--danger-soft); color: var(--danger); }
+  button.clear:focus-visible { outline: 2px solid var(--danger); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Todo</h1>
+    <span class="date" id="date"></span>
+  </header>
+
+  <div class="card">
+    <div class="progress-wrap" id="progressWrap" hidden>
+      <div class="progress-meta">
+        <span id="progressLabel">0 of 0 done</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <form class="add-row" id="addForm" autocomplete="off">
+      <input type="text" id="input" placeholder="Add a task…" aria-label="New task" maxlength="200">
+      <button type="submit" class="add-btn">Add</button>
+    </form>
+
+    <div class="filters" role="group" aria-label="Filter tasks">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="active" aria-pressed="false">Active</button>
+      <button type="button" data-filter="done" aria-pressed="false">Done</button>
+    </div>
+
+    <ul class="list" id="list"></ul>
+    <div class="empty" id="empty" hidden>
+      <div class="icon">✓</div>
+      <p id="emptyMsg">Nothing here. Add a task to get started.</p>
+    </div>
+
+    <footer class="bar" id="footer" hidden>
+      <span id="countLabel">0 tasks left</span>
+      <button type="button" id="clearDone" class="clear">Clear done</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+(() => {
+  const STORAGE_KEY = "griffin-todo-v1";
+  const $ = (id) => document.getElementById(id);
+
+  // state
+  let tasks = [];
+  let filter = "all";
+  try { tasks = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch (e) { tasks = []; }
+
+  const save = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+
+  // date
+  $("date").textContent = new Date().toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+
+  function render() {
+    const list = $("list");
+    list.innerHTML = "";
+    const visible = tasks.filter(t =>
+      filter === "all" ? true : filter === "active" ? !t.done : t.done
+    );
+
+    visible.forEach(t => {
+      const li = document.createElement("li");
+      li.className = "item" + (t.done ? " done" : "");
+      li.dataset.id = t.id;
+
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.className = "check";
+      cb.checked = t.done;
+      cb.setAttribute("aria-label", "Mark " + t.text + (t.done ? " as not done" : " as done"));
+      cb.addEventListener("change", () => toggle(t.id));
+
+      const span = document.createElement("span");
+      span.className = "label";
+      span.textContent = t.text;
+
+      const del = document.createElement("button");
+      del.className = "del";
+      del.textContent = "✕";
+      del.setAttribute("aria-label", "Delete " + t.text);
+      del.addEventListener("click", () => remove(t.id));
+
+      li.append(cb, span, del);
+      list.appendChild(li);
+    });
+
+    // empty state
+    $("empty").hidden = tasks.length > 0 && filter === "all" ? false : (visible.length > 0 ? true : false);
+    if (tasks.length === 0) {
+      $("empty").hidden = false;
+      $("emptyMsg").textContent = "Nothing here. Add a task to get started.";
+    } else if (visible.length === 0) {
+      $("empty").hidden = false;
+      $("emptyMsg").textContent = filter === "active" ? "All done — no active tasks." : "No completed tasks yet.";
+    }
+
+    // progress
+    const total = tasks.length, done = tasks.filter(t => t.done).length;
+    const pct = total ? Math.round(done / total * 100) : 0;
+    $("progressWrap").hidden = total === 0;
+    $("progressLabel").textContent = done + " of " + total + " done";
+    $("progressPct").textContent = pct + "%";
+    $("progressFill").style.width = pct + "%";
+
+    // footer
+    const left = total - done;
+    $("footer").hidden = total === 0;
+    $("countLabel").textContent = left + (left === 1 ? " task left" : " tasks left");
+    $("clearDone").hidden = done === 0;
+  }
+
+  function add(text) {
+    tasks.unshift({ id: Date.now() + "-" + Math.random().toString(36).slice(2, 7), text, done: false });
+    save(); render();
+  }
+  function toggle(id) {
+    const t = tasks.find(t => t.id === id);
+    if (t) { t.done = !t.done; save(); render(); }
+  }
+  function remove(id) {
+    tasks = tasks.filter(t => t.id !== id);
+    save(); render();
+  }
+
+  // form
+  $("addForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = $("input").value.trim();
+    if (!v) return;
+    add(v);
+    $("input").value = "";
+    $("input").focus();
+  });
+
+  // filters
+  document.querySelectorAll(".filters button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      filter = btn.dataset.filter;
+      document.querySelectorAll(".filters button").forEach(b => b.setAttribute("aria-pressed", b === btn));
+      render();
+    });
+  });
+
+  // clear done
+  $("clearDone").addEventListener("click", () => {
+    tasks = tasks.filter(t => !t.done);
+    save(); render();
+  });
+
+  render();
+  $("input").focus();
+})();
+</script>
+</body>
+</html>

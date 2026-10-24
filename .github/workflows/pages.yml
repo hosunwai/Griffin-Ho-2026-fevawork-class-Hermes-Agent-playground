@@ -31,6 +31,7 @@ jobs:
           assert html.rstrip().endswith('</html>')
           for name in ['index.html', 'todo.html', 'education.html']:
               shutil.copyfile(name, site / name)
+          shutil.copytree('education-assets', site / 'education-assets', dirs_exist_ok=True)
           (site / '.nojekyll').touch()
           print('Validated presentation and built static site.')
           PY

@@ -1,99 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f7f5ee">
-<title>教育中心｜陪伴孩子，找到自己的學習節奏</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#f7f5ee" name="theme-color"/>
+<title>Johnny Education Centre 尊尼教育中心｜課堂示範網站</title>
 <style>
 :root{--paper:#f7f5ee;--surface:#fffefa;--ink:#263d36;--muted:#65736a;--green:#375f4e;--mint:#e6eee4;--peach:#f4dfcc;--yellow:#f1df9e;--line:#e2e1d8;--serif:"Noto Serif TC","Songti TC",serif;--sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}button{font:inherit}.wrap{width:min(1160px,calc(100% - 48px));margin:auto}.topbar{height:84px;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:19px;letter-spacing:.03em}.brandmark{height:42px;width:42px;display:grid;place-items:center;border-radius:50%;background:var(--mint);color:var(--green);font-family:var(--serif);font-size:20px}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:500;letter-spacing:.16em;margin-top:2px}.nav{display:flex;align-items:center;gap:30px;font-size:14px;color:#4f6258}.nav a:hover,.textlink:hover{color:var(--green);text-decoration:underline;text-underline-offset:5px}.nav .contact-link,.btn{padding:12px 19px;border-radius:999px;background:var(--green);color:#fff;font-weight:600}.menu-button{display:none;border:1px solid var(--line);border-radius:50%;background:var(--surface);width:44px;height:44px;color:var(--ink);font-size:20px}.hero{padding:61px 0 82px}.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:65px}.kicker{font-size:13px;letter-spacing:.19em;font-weight:700;color:var(--green);display:flex;align-items:center;gap:10px}.kicker:before{content:"";display:block;width:25px;height:1px;background:currentColor}.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(42px,5vw,66px);line-height:1.32;letter-spacing:.025em;margin:23px 0}.hero h1 em{font-style:normal;color:var(--green);position:relative;white-space:nowrap}.hero h1 em:after{content:"";position:absolute;left:0;bottom:2px;width:100%;height:12px;background:var(--yellow);opacity:.65;z-index:-1;border-radius:50%}.hero-copy{font-size:17px;line-height:1.95;color:var(--muted);max-width:500px}.hero-actions{display:flex;align-items:center;gap:22px;margin-top:29px}.btn{display:inline-flex;align-items:center;gap:10px;font-size:14px;transition:transform .2s,background .2s}.btn:hover{background:#294b3c;transform:translateY(-2px)}.textlink{font-size:14px;font-weight:600}.hero-art{height:438px;position:relative;display:grid;place-items:center}.art-paper{position:absolute;width:84%;height:89%;background:#e8ede2;border-radius:48% 48% 43% 44% / 38% 40% 50% 52%;transform:rotate(-4deg)}.sun{position:absolute;width:105px;height:105px;border-radius:50%;background:var(--yellow);right:9%;top:7%}.book{position:absolute;bottom:11%;left:12%;width:115px;height:78px;background:var(--peach);border-radius:12px 23px 9px 16px;transform:rotate(-13deg);box-shadow:inset 0 -8px #e9cbb0}.leaf{position:absolute;width:125px;height:63px;border-radius:100% 0 100% 0;background:#8ca58a;transform:rotate(-39deg);right:3%;bottom:18%}.illustration{position:relative;z-index:2;width:min(83%,440px);filter:drop-shadow(0 18px 18px #263d3615)}.art-note{position:absolute;z-index:3;background:var(--surface);padding:12px 17px;border-radius:14px;box-shadow:0 8px 24px #263d3610;font-size:13px;color:var(--green)}.note-a{left:0;top:31%}.note-b{right:2%;bottom:12%}.scroll-note{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.16em;color:#78837a;display:flex;gap:10px;align-items:center}.scroll-note:before{content:"↓";font-size:16px}.section{padding:91px 0}.section-head{max-width:650px;margin:0 auto 42px;text-align:center}.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:700}.section h2{font-family:var(--serif);font-size:clamp(31px,4vw,43px);line-height:1.45;font-weight:500;letter-spacing:.02em;margin:12px 0 14px}.section-head>p,.section-lead{font-size:15px;line-height:1.9;color:var(--muted)}.intro{background:var(--surface)}.intro-layout{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:78px}.intro-stamp{min-height:280px;background:var(--mint);border-radius:48% 52% 45% 55%;display:grid;place-items:center;text-align:center;padding:35px;color:var(--green);font-family:var(--serif);font-size:25px;line-height:1.7;transform:rotate(-3deg)}.intro-stamp span{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.18em}.intro-copy h2{font-family:var(--serif);font-size:39px;font-weight:500;line-height:1.5;margin:12px 0 18px}.intro-copy p{font-size:15px;line-height:2;color:var(--muted)}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.principle{padding:29px 26px 27px;background:var(--surface);border:1px solid var(--line);border-radius:14px;min-height:220px}.principle .index{font-family:var(--serif);font-size:15px;color:var(--green);letter-spacing:.12em}.principle h3{font-family:var(--serif);font-size:23px;font-weight:500;margin:19px 0 10px}.principle p{color:var(--muted);font-size:14px;line-height:1.9;margin:0}.courses{background:#eef0e8}.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.course-card{background:var(--surface);border-radius:14px;padding:24px;min-height:215px;display:flex;flex-direction:column;transition:transform .2s}.course-card:hover{transform:translateY(-4px)}.course-card .tag{font-size:11px;letter-spacing:.14em;color:var(--green);font-weight:700}.course-card h3{font-family:var(--serif);font-size:23px;font-weight:500;margin:20px 0 9px}.course-card p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}.course-card .more{margin-top:auto;padding-top:20px;font-size:12px;color:var(--green);font-weight:700}.course-note{text-align:center;font-size:12px;color:var(--muted);margin:23px 0 0}.teachers{background:var(--surface)}.teacher-layout{display:grid;grid-template-columns:1fr 1fr;gap:24px}.teacher-card{display:grid;grid-template-columns:150px 1fr;gap:25px;align-items:center;padding:24px;border:1px solid var(--line);border-radius:15px}.portrait{height:158px;border-radius:48% 48% 42% 42%;background:var(--peach);display:grid;place-items:center;color:#8b6750;font-family:var(--serif);font-size:12px;text-align:center}.portrait.alt{background:var(--mint);color:var(--green)}.teacher-card h3{font-family:var(--serif);font-size:22px;font-weight:500;margin:8px 0}.teacher-card p{font-size:13px;color:var(--muted);line-height:1.9;margin:0}.teacher-role{font-size:11px;letter-spacing:.12em;color:var(--green);font-weight:700}.contact{background:var(--green);color:#f7f5ee;padding:70px 0}.contact-layout{display:grid;grid-template-columns:1fr .8fr;gap:40px;align-items:center}.contact .eyebrow{color:#d1dfc9}.contact h2{font-family:var(--serif);font-size:39px;font-weight:500;line-height:1.5;margin:12px 0}.contact p{font-size:14px;color:#d8e2d9;line-height:1.9}.contact-list{border-top:1px solid #ffffff3d}.contact-row{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid #ffffff3d;font-size:13px}.contact-row span:first-child{color:#d1dfc9}.contact-row span:last-child{text-align:right}footer{padding:27px 0;background:#29483b;color:#e7eee7}.footer-main{display:flex;align-items:center;justify-content:space-between;gap:24px}.footer-brand{font-family:var(--serif);font-size:19px}.footer-links{display:flex;gap:22px;font-size:12px;color:#d0ddd1}.copyright{font-size:11px;color:#c2d0c4;margin:17px 0 0;border-top:1px solid #ffffff30;padding-top:16px;display:flex;justify-content:space-between;gap:10px}.placeholder{border-bottom:1px dashed currentColor;cursor:help}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:820px){.hero-grid{gap:25px}.hero-art{height:360px}.intro-layout{gap:40px}.teacher-card{grid-template-columns:115px 1fr;padding:18px;gap:18px}.portrait{height:130px}.contact-layout{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.wrap{width:min(100% - 36px,500px)}.topbar{height:72px}.brand{font-size:16px}.brandmark{width:38px;height:38px}.menu-button{display:block}.nav{display:none;position:absolute;z-index:10;left:0;right:0;top:68px;padding:20px 24px;background:var(--surface);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0}.nav.open{display:flex}.nav a{padding:13px 3px}.nav .contact-link{text-align:center;margin-top:7px}.hero{padding:40px 0 60px}.hero-grid{grid-template-columns:1fr;gap:8px}.hero h1{font-size:43px;margin:17px 0}.hero-copy{font-size:15px}.hero-art{height:310px;grid-row:1}.hero-art .illustration{width:78%}.art-note{font-size:11px;padding:9px 12px}.note-a{left:0;top:28%}.note-b{right:0;bottom:10%}.scroll-note{display:none}.section{padding:65px 0}.section-head{margin-bottom:30px}.intro-layout{grid-template-columns:1fr;gap:28px}.intro-stamp{min-height:200px;max-width:300px;margin:auto;width:80%;font-size:22px}.intro-copy h2{font-size:32px}.principles{grid-template-columns:1fr;gap:12px}.principle{min-height:0;padding:23px}.principle h3{margin:12px 0 7px}.course-grid{grid-template-columns:1fr;gap:12px}.course-card{min-height:175px}.teacher-layout{grid-template-columns:1fr;gap:12px}.teacher-card{grid-template-columns:100px 1fr}.portrait{height:115px}.contact{padding:55px 0}.contact-layout{grid-template-columns:1fr;gap:24px}.contact h2{font-size:33px}.footer-main{align-items:flex-start;flex-direction:column}.footer-links{flex-wrap:wrap;gap:14px}.copyright{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
-</head>
-<body>
+<meta content="noindex,nofollow" name="robots"/><style>
+:root{--green:#17558b;--mint:#e9f2f7;--ink:#213c53;--muted:#526b7c;--peach:#f9e3c8}
+.demo-banner{background:#f5d997;color:#493c22;padding:11px 24px;text-align:center;font-size:13px;line-height:1.6}
+.brand-logo{width:228px;height:78px;object-fit:contain}.topbar{height:100px}.hero-art{height:auto;display:block}.hero-image{width:100%;height:auto;border-radius:24px;display:block}.hero-grid{gap:42px;grid-template-columns:.9fr 1.1fr}.hero h1{font-size:clamp(38px,4.5vw,58px)}
+.principles{grid-template-columns:repeat(4,1fr)}.principle{padding:24px 20px}.principle h3{font-size:22px}
+.course-grid{grid-template-columns:repeat(2,1fr);gap:24px}.course-card{padding:0;overflow:hidden;border:1px solid var(--line)}.course-image{width:100%;height:auto;display:block;aspect-ratio:3/2;object-fit:contain}.course-body{padding:24px}.course-body h3{margin:10px 0 12px}.course-body p{font-size:15px;line-height:1.9;min-height:86px}.course-price{font-size:23px;font-weight:700;color:var(--green);margin:20px 0 12px}.course-price span{font-size:14px;font-weight:400;color:var(--muted)}.course-status{font-size:12px;color:var(--muted)}.portrait{font-size:46px;font-family:var(--serif)}.contact-row span:last-child{max-width:74%;overflow-wrap:anywhere}.contact{background:#17558b}footer{background:#123d62}.btn:hover{background:#123d62}
+a:focus-visible,button:focus-visible{outline:3px solid #d87516;outline-offset:5px}
+@media(max-width:900px){.nav{gap:17px}.brand-logo{width:190px}.principles{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.demo-banner{font-size:11px;padding:9px 18px}.topbar{height:83px;position:relative}.brand-logo{width:190px;height:70px}.nav{top:83px;left:-18px;right:-18px}.hero-grid{grid-template-columns:1fr;gap:28px}.hero h1{font-size:39px}.hero-art{grid-row:1}.hero{padding-top:25px}.note-b{right:10px;bottom:10px}.principles,.course-grid{grid-template-columns:1fr}.course-body p{min-height:0}.teacher-card{grid-template-columns:1fr}.portrait{height:80px;width:80px}.contact-row{font-size:12px}.contact h2{font-size:32px}}
+</style></head>
+<body><div class="demo-banner" role="note">課堂示範網站｜公司、課程及聯絡資料僅供教學展示，並非真實招生或聯絡渠道。</div>
 <header class="wrap topbar">
-  <a class="brand" href="#top" aria-label="回到首頁">
-    <span class="brandmark" aria-hidden="true">學</span>
-    <span><span class="placeholder" title="收到品牌資料後替換">教育中心名稱</span><small>LEARNING · GROWING · TOGETHER</small></span>
-  </a>
-  <button class="menu-button" id="menuButton" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="nav">☰</button>
-  <nav class="nav" id="nav" aria-label="主要導覽">
-    <a href="#about">中心簡介</a><a href="#approach">教學理念</a><a href="#courses">課程</a><a href="#teachers">師資介紹</a><a class="contact-link" href="#contact">聯絡我們</a>
-  </nav>
+<a aria-label="回到首頁" class="brand" href="#top"><img alt="Johnny Education Centre 尊尼教育中心" class="brand-logo" height="78" src="education-assets/logo.webp" width="228"/></a>
+<button aria-controls="nav" aria-expanded="false" aria-label="開啟導覽選單" class="menu-button" id="menuButton">☰</button>
+<nav aria-label="主要導覽" class="nav" id="nav">
+<a href="#about">中心簡介</a><a href="#approach">教學理念</a><a href="#courses">課程</a><a href="#teachers">師資介紹</a><a class="contact-link" href="#contact">聯絡我們</a>
+</nav>
 </header>
 <main id="top">
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="kicker">一個安心探索、自在成長的地方</p>
-      <h1>陪伴孩子，<br>找到自己的<span>學習節奏</span></h1>
-      <p class="hero-copy">每個孩子都有獨特的好奇心與步伐。我們希望在溫暖、專注的學習環境裡，陪孩子一步一步認識自己，享受探索新知的過程。</p>
-      <div class="hero-actions"><a class="btn" href="#courses">認識課程 <span aria-hidden="true">↗</span></a><a class="textlink" href="#about">了解我們　↓</a></div>
-    </div>
-    <div class="hero-art" aria-label="書本、陽光與植物的插畫">
-      <div class="art-paper"></div><div class="sun"></div><div class="book"></div><div class="leaf"></div>
-      <span class="art-note note-a">慢慢來，也是一種前進</span><span class="art-note note-b">好奇 · 練習 · 成長</span>
-      <svg class="illustration" viewBox="0 0 460 390" role="img" aria-label="孩子在書桌閱讀與學習的插畫">
-        <ellipse cx="230" cy="358" rx="159" ry="15" fill="#314b3e" opacity=".12"/>
-        <path d="M103 328c15-62 54-94 127-94s113 32 128 94" fill="#c77b56"/>
-        <path d="M153 328c10-49 33-75 77-75s67 26 77 75" fill="#f3d8bd"/>
-        <path d="M209 254h43v69h-43z" fill="#e7ae83"/>
-        <ellipse cx="230" cy="164" rx="70" ry="82" fill="#e8b993"/>
-        <path d="M161 168c-13-59 18-106 71-106 54 0 85 37 72 103-11-7-21-18-29-33-20 18-51 29-96 28-5 2-12 5-18 8z" fill="#493d33"/>
-        <path d="M162 165c-10 30-3 58 12 73l-10-79zm136 1c9 26 2 55-12 70l10-75z" fill="#493d33"/>
-        <ellipse cx="205" cy="168" rx="4" ry="5" fill="#3a3029"/><ellipse cx="255" cy="168" rx="4" ry="5" fill="#3a3029"/>
-        <path d="M220 193q10 9 20 0" fill="none" stroke="#a65d52" stroke-width="3" stroke-linecap="round"/>
-        <path d="M106 319h248v20H106z" fill="#8d684c"/><path d="M126 338h16v41h-16zm191 0h16v41h-16z" fill="#6b5644"/>
-        <path d="M148 317c20-16 44-16 68-4v8c-25-11-48-9-68 7zm95-4c21-13 45-12 68 4l-2 10c-22-15-45-18-66-6z" fill="#f8f1df" stroke="#d5c8ac" stroke-width="2"/>
-        <path d="M230 313v14" stroke="#b8a889" stroke-width="2"/>
-        <path d="M81 289c-12-27-7-56 9-75 9 22 9 44-9 75zm18-10c0-35 19-59 44-70-1 31-14 53-44 70z" fill="#769174"/>
-        <path d="M392 297c-17-32-12-67 8-92 14 28 12 55-8 92zm-20-18c-4-36-25-59-52-67 4 32 19 54 52 67z" fill="#8ca58a"/>
-        <path d="M85 294l22-56m284 64-20-65" stroke="#607a5c" stroke-width="4" stroke-linecap="round"/>
-        <rect x="359" y="295" width="59" height="31" rx="5" fill="#d88b65"/><path d="M354 294h69v8h-69z" fill="#ba6f50"/>
-        <circle cx="98" cy="103" r="4" fill="#d99c6f"/><circle cx="369" cy="139" r="5" fill="#d99c6f"/><path d="M118 114l5-9 5 9-5 9z" fill="#8ca58a"/>
-      </svg>
-    </div>
-  </div>
+<div class="wrap hero-grid">
+<div>
+<p class="kicker">專為 5–9 歲小朋友而設</p>
+<h1>讓好奇心啟程，<br/>讓孩子愛上學習。</h1>
+<p class="hero-copy">結合學術基礎與科技啟發，透過有趣、互動及生活化的教學方式，讓孩子在輕鬆愉快中成長與進步。</p>
+<div class="hero-actions"><a class="btn" href="#courses">認識課程 <span aria-hidden="true">↗</span></a><a class="textlink" href="#about">了解我們　↓</a></div>
+</div>
+<div aria-label="AI 小小探索班課程插畫" class="hero-art"><img alt="AI 小小探索班插畫：孩子透過平板認識人工智能" class="hero-image" fetchpriority="high" height="667" src="education-assets/ai.webp" width="1000"/><span class="art-note note-b">學術基礎 × 科技啟發</span></div>
+</div>
 </section>
 <section class="section intro" id="about">
-  <div class="wrap intro-layout">
-    <div class="intro-stamp">在陪伴中<br>看見每一份可能<span>OUR STORY</span></div>
-    <div class="intro-copy"><p class="eyebrow">關於我們</p><h2>讓學習不只為了答案，<br>也為了發現更多可能。</h2><p><span class="placeholder" title="請以公司背景替換">【公司簡介待補：中心成立背景、服務對象與特色】</span></p><p>我們重視每一次提問、嘗試與小小進步，期望與孩子及家庭一起，建立自在而持續的學習經驗。</p></div>
-  </div>
+<div class="wrap intro-layout">
+<div class="intro-stamp">興趣是<br/>最好的老師<span>JOHNNY EDUCATION CENTRE</span></div>
+<div class="intro-copy"><p class="eyebrow">關於尊尼教育中心</p><h2>建立學習興趣，<br/>也建立孩子的自信。</h2><p>Johnny Education Centre 專為 5 至 9 歲小學生而設，致力打造一個結合學術基礎與科技啟發的學習環境。</p><p>我們明白這個階段是孩子建立學習興趣與自信的關鍵時期，因此透過有趣、互動及生活化的教學方式，讓孩子在輕鬆愉快中成長與進步。</p></div>
+</div>
 </section>
 <section class="section" id="approach">
-  <div class="wrap"><div class="section-head"><p class="eyebrow">我們相信</p><h2>好的學習，從理解孩子開始</h2><p>以下為主頁的理念內容架構，可按中心實際教學方式調整。</p></div>
-  <div class="principles">
-    <article class="principle"><span class="index">01 / 看見個別差異</span><h3>每個孩子，都有自己的步伐</h3><p>尊重孩子不同的興趣與學習節奏，讓成長有自己的空間。</p></article>
-    <article class="principle"><span class="index">02 / 鼓勵主動探索</span><h3>讓好奇心帶路</h3><p>在提問、嘗試與交流之中，陪孩子建立主動學習的信心。</p></article>
-    <article class="principle"><span class="index">03 / 重視持續成長</span><h3>看重過程中的進步</h3><p>以鼓勵和陪伴，讓每次練習都成為向前的一小步。</p></article>
-  </div></div>
+<div class="wrap"><div class="section-head"><p class="eyebrow">我們相信</p><h2>好的學習，從理解孩子開始</h2><p>我們相信「興趣是最好的老師」，讓孩子在開心及被鼓勵的環境下吸收知識。</p></div>
+<div class="principles"><article class="principle"><span class="index">01 / 教學理念</span><h3>小班互動教學</h3><p>照顧每位學生的學習進度。</p></article><article class="principle"><span class="index">02 / 教學理念</span><h3>遊戲式學習</h3><p>透過活動、遊戲及故事提升理解力。</p></article><article class="principle"><span class="index">03 / 教學理念</span><h3>建立自信</h3><p>鼓勵表達與嘗試，培養正面學習態度。</p></article><article class="principle"><span class="index">04 / 教學理念</span><h3>科技啟蒙</h3><p>讓孩子從小接觸 AI 與數碼工具。</p></article></div></div>
 </section>
 <section class="section courses" id="courses">
-  <div class="wrap"><div class="section-head"><p class="eyebrow">課程一覽</p><h2>為不同興趣，預留探索的空間</h2><p>課程頁面稍後製作；以下先提供可替換的分類版位。</p></div>
-  <div class="course-grid">
-    <a class="course-card" href="#contact"><span class="tag">COURSE 01</span><h3>語文學習</h3><p>【課程方向與適合對象待補】</p><span class="more">了解課程　↗</span></a>
-    <a class="course-card" href="#contact"><span class="tag">COURSE 02</span><h3>數理探索</h3><p>【課程方向與適合對象待補】</p><span class="more">了解課程　↗</span></a>
-    <a class="course-card" href="#contact"><span class="tag">COURSE 03</span><h3>創意與興趣</h3><p>【課程方向與適合對象待補】</p><span class="more">了解課程　↗</span></a>
-  </div><p class="course-note">課程名稱及內容為版面示例，請以中心實際提供的課程替換。</p></div>
+<div class="wrap"><div class="section-head"><p class="eyebrow">課程一覽</p><h2>從學科基礎，到科技與創意探索</h2><p>四款課程，陪孩子探索學習興趣。以下收費與內容均為課堂示例。</p></div>
+<div class="course-grid"><article class="course-card"><img alt="AI小小探索班課程插畫" class="course-image" height="600" loading="lazy" src="education-assets/ai.webp" width="900"/><div class="course-body"><span class="tag">課程 01</span><h3>AI小小探索班</h3><p>認識人工智能，學習以 AI 工具協助學習及創作，例如生成故事、圖片等。</p><div class="course-price">HKD 1,100<span>／4 堂</span></div><span class="course-status">獨立課程頁稍後製作</span></div></article><article class="course-card"><img alt="兒童Python啟蒙班課程插畫" class="course-image" height="600" loading="lazy" src="education-assets/python.webp" width="900"/><div class="course-body"><span class="tag">課程 02</span><h3>兒童Python啟蒙班</h3><p>以遊戲及圖像方式教授編程概念，培養邏輯思維與解難能力，適合零基礎小朋友。</p><div class="course-price">HKD 1,300<span>／4 堂</span></div><span class="course-status">獨立課程頁稍後製作</span></div></article><article class="course-card"><img alt="小學全科提升班課程插畫" class="course-image" height="600" loading="lazy" src="education-assets/primary.webp" width="900"/><div class="course-body"><span class="tag">課程 03</span><h3>小學全科提升班</h3><p>針對中文、英文及數學基礎，透過練習與講解，幫助學生打好基礎及提升成績。</p><div class="course-price">HKD 900<span>／4 堂</span></div><span class="course-status">獨立課程頁稍後製作</span></div></article><article class="course-card"><img alt="創意繪畫小達人班課程插畫" class="course-image" height="600" loading="lazy" src="education-assets/art.webp" width="900"/><div class="course-body"><span class="tag">課程 04</span><h3>創意繪畫小達人班</h3><p>讓孩子拾起畫筆，創作圖畫、簡報及小故事，提升創意與表達能力。</p><div class="course-price">HKD 1,200<span>／4 堂</span></div><span class="course-status">獨立課程頁稍後製作</span></div></article></div><p class="course-note">本頁為課堂練習，並未提供真實報名、付款或預約服務。</p></div>
 </section>
 <section class="section teachers" id="teachers">
-  <div class="wrap"><div class="section-head"><p class="eyebrow">師資介紹</p><h2>用心聆聽，也用心引導</h2><p>師資資料待提供；先保留簡潔介紹版位，避免虛構資格與經驗。</p></div>
-  <div class="teacher-layout">
-    <article class="teacher-card"><div class="portrait">講師照片<br>待提供</div><div><span class="teacher-role">【教學範疇待補】</span><h3>【導師姓名】</h3><p>【簡介待補：教學背景、專長與教學風格】</p></div></article>
-    <article class="teacher-card"><div class="portrait alt">講師照片<br>待提供</div><div><span class="teacher-role">【教學範疇待補】</span><h3>【導師姓名】</h3><p>【簡介待補：教學背景、專長與教學風格】</p></div></article>
-  </div></div>
+<div class="wrap"><div class="section-head"><p class="eyebrow">師資介紹</p><h2>用心聆聽，也用心引導</h2><p>以互動、耐心與鼓勵，陪孩子安心學習。</p></div>
+<div class="teacher-layout"><article class="teacher-card"><div aria-hidden="true" class="portrait">J</div><div><span class="teacher-role">校長 · Microsoft &amp; Google Educator</span><h3>Johnny Ip</h3><p>擁有多年 IT 教學及培訓經驗，專注將複雜科技轉化為小朋友都能理解的學習內容。擅長以互動及遊戲方式教學，讓孩子在開心中學習，建立自信與成就感。</p></div></article><article class="teacher-card"><div aria-hidden="true" class="portrait alt">教</div><div><span class="teacher-role">教學團隊</span><h3>用耐心與鼓勵引導學習</h3><p>所有導師均具備教育熱誠及相關經驗，並經專業培訓，懂得與小朋友溝通及引導學習，讓每位孩子都能安心學習。</p></div></article></div></div>
 </section>
 <section class="contact" id="contact">
-  <div class="wrap contact-layout"><div><p class="eyebrow">聯絡我們</p><h2>想了解課程，<br>歡迎與我們聊聊。</h2><p>【聯絡方式及中心地址待補】</p></div>
-  <div class="contact-list"><div class="contact-row"><span>電話</span><span class="placeholder">【待補】</span></div><div class="contact-row"><span>電郵</span><span class="placeholder">【待補】</span></div><div class="contact-row"><span>地址</span><span class="placeholder">【待補】</span></div><div class="contact-row"><span>服務時間</span><span class="placeholder">【待補】</span></div></div></div>
+<div class="wrap contact-layout"><div><p class="eyebrow">聯絡我們</p><h2>想了解課程，<br/>歡迎與我們聊聊。</h2><p>以下為課堂示例資料，並非真實聯絡渠道；電話、電郵與地址僅作文字展示。</p></div>
+<div class="contact-list"><div class="contact-row"><span>電話／WhatsApp</span><span>+852 1234 xxxx（示例，非有效號碼）</span></div><div class="contact-row"><span>電郵</span><span>info@johnnyedu.hk（示例）</span></div><div class="contact-row"><span>地址</span><span>九龍長沙灣貿易廣場5樓599號（示例）</span></div><div class="contact-row"><span>網站</span><span>www.johnnyedu.hk（示例）</span></div><div class="contact-row"><span>星期一至五</span><span>14:00 – 19:30</span></div><div class="contact-row"><span>星期六</span><span>10:00 – 18:00</span></div><div class="contact-row"><span>星期日及公眾假期</span><span>休息</span></div></div></div>
 </section>
 </main>
-<footer><div class="wrap"><div class="footer-main"><a class="footer-brand" href="#top">【教育中心名稱】</a><nav class="footer-links" aria-label="頁尾導覽"><a href="#about">中心簡介</a><a href="#approach">教學理念</a><a href="#courses">課程</a><a href="#teachers">師資</a><a href="#contact">聯絡我們</a></nav></div><div class="copyright"><span>© <span id="year"></span> 【教育中心名稱】</span><span>陪伴孩子，找到自己的學習節奏。</span></div></div></footer>
+<footer><div class="wrap"><div class="footer-main"><a class="footer-brand" href="#top">Johnny Education Centre</a><nav aria-label="頁尾導覽" class="footer-links"><a href="#about">中心簡介</a><a href="#approach">教學理念</a><a href="#courses">課程</a><a href="#teachers">師資</a><a href="#contact">聯絡我們</a></nav></div><div class="copyright"><span>Johnny Education Centre · 尊尼教育中心</span><span>課堂示範網站｜不接受真實報名及查詢</span></div></div></footer>
 <script>
-(()=>{const b=document.getElementById('menuButton'),n=document.getElementById('nav');b.addEventListener('click',()=>{const open=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(open));b.setAttribute('aria-label',open?'關閉導覽選單':'開啟導覽選單');b.textContent=open?'×':'☰';n.classList.toggle('open',open)});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','開啟導覽選單');b.textContent='☰';n.classList.remove('open')}));document.getElementById('year').textContent=new Date().getFullYear()})();
+(()=>{const b=document.getElementById('menuButton'),n=document.getElementById('nav');b.addEventListener('click',()=>{const open=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',String(open));b.setAttribute('aria-label',open?'關閉導覽選單':'開啟導覽選單');b.textContent=open?'×':'☰';n.classList.toggle('open',open)});n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','開啟導覽選單');b.textContent='☰';n.classList.remove('open')}));})();
 </script>
 </body>
 </html>

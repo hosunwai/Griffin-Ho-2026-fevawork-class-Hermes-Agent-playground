@@ -1,33 +1,43 @@
 name: Build & Deploy to GitHub Pages
-
 on:
   push:
     branches: [main]
   workflow_dispatch:
-
 permissions:
   contents: read
   pages: write
   id-token: write
-
 concurrency:
   group: pages
   cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Validate and build static site
         run: |
-          echo "Publishing static site from main branch root"
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          site = Path('_site')
+          site.mkdir(exist_ok=True)
+          html = Path('index.html').read_text(encoding='utf-8')
+          assert '<html lang="zh-Hant">' in html
+          assert html.count('class="slide') == 12
+          assert html.rstrip().endswith('</html>')
+          for name in ['index.html', 'todo.html']:
+              shutil.copyfile(name, site / name)
+          (site / '.nojekyll').touch()
+          print('Validated presentation and built static site.')
+          PY
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
-
+          path: _site
   deploy:
     needs: build
     runs-on: ubuntu-latest

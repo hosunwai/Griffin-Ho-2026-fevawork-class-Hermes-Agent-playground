@@ -37,6 +37,7 @@ jobs:
           assert html.rstrip().endswith('</html>')
           for name in ['index.html', 'dashboard.html', 'todo.html', 'education.html', 'kids-game.html', 'kids-engine.js', 'course-ai.html', 'course-python.html', 'course-primary.html', 'course-art.html', 'course-style.css', 'enrolment.html', 'admin.html', 'application.html', 'enrolment-data.js', 'enrolment-ui.js', 'enrolment-style.css']:
               shutil.copyfile(name, site / name)
+          shutil.copytree('threads-research', site / 'threads-research', dirs_exist_ok=True)
           shutil.copytree('education-assets', site / 'education-assets', dirs_exist_ok=True)
           (site / '.nojekyll').touch()
           print('Validated presentation and built static site.')
